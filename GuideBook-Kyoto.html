@@ -1,0 +1,616 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Travel Guide Kyoto</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins', sans-serif;
+      background:#f3eee8;
+      color:#333;
+      overflow-x:hidden;
+    }
+
+    nav{
+      width:100%;
+      position:fixed;
+      top:0;
+      left:0;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 70px;
+      z-index:1000;
+      background:rgba(0,0,0,0.4);
+      backdrop-filter:blur(6px);
+    }
+
+    nav h1{
+      color:white;
+      font-size:32px;
+      font-weight:700;
+      letter-spacing:3px;
+    }
+
+    nav ul{
+      display:flex;
+      list-style:none;
+      gap:35px;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      font-size:15px;
+      transition:0.3s;
+    }
+
+    nav a:hover{
+      color:#ffd4b3;
+    }
+
+    .hero{
+      width:100%;
+      min-height:100vh;
+      display:flex;
+      flex-wrap:wrap;
+    }
+
+    .hero-left{
+      flex:1;
+      min-width:300px;
+      background:url('https://images.pexels.com/photos/402028/pexels-photo-402028.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover;
+    }
+
+    .hero-right{
+      flex:1;
+      min-width:300px;
+      background:#e9dcc9;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding:90px;
+      position:relative;
+    }
+
+    .hero-right::before{
+      content:"";
+      width:250px;
+      height:250px;
+      border-radius:50%;
+      background:#d2b89a;
+      position:absolute;
+      top:-70px;
+      right:-70px;
+      opacity:0.4;
+    }
+
+    .hero-right h2{
+      font-size:85px;
+      line-height:1;
+      margin-bottom:25px;
+      color:#2d1e17;
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-right p{
+      font-size:18px;
+      line-height:1.9;
+      margin-bottom:35px;
+      color:#555;
+      position:relative;
+      z-index:2;
+    }
+
+    .btn{
+      width:200px;
+      padding:16px;
+      border:none;
+      background:#a06b47;
+      color:white;
+      font-size:17px;
+      border-radius:8px;
+      cursor:pointer;
+      transition:0.3s;
+      position:relative;
+      z-index:2;
+    }
+
+    .btn:hover{
+      background:#875638;
+      transform:translateY(-3px);
+    }
+
+    section{
+      width:92%;
+      max-width:1250px;
+      margin:40px auto;
+      background:white;
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .section-title{
+      padding:50px 50px 10px;
+      font-size:50px;
+      color:#2d1e17;
+      font-weight:700;
+    }
+
+    .section-subtitle{
+      padding:0 50px 40px;
+      color:#777;
+      font-size:17px;
+    }
+
+    .destination-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:25px;
+      padding:0 50px 50px;
+    }
+
+    .card{
+      background:#fff;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 5px 15px rgba(0,0,0,0.08);
+      transition:0.4s;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+    }
+
+    .card img{
+      width:100%;
+      height:240px;
+      object-fit:cover;
+    }
+
+    .card-content{
+      padding:25px;
+    }
+
+    .card-content h3{
+      margin-bottom:12px;
+      font-size:25px;
+      color:#2d1e17;
+    }
+
+    .card-content p{
+      line-height:1.8;
+      color:#666;
+    }
+
+    .food-section{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+      padding:0 50px 50px;
+    }
+
+    .food-card{
+      position:relative;
+      overflow:hidden;
+      border-radius:18px;
+    }
+
+    .food-card img{
+      width:100%;
+      height:330px;
+      object-fit:cover;
+      transition:0.4s;
+    }
+
+    .food-card:hover img{
+      transform:scale(1.1);
+    }
+
+    .food-text{
+      position:absolute;
+      bottom:0;
+      width:100%;
+      padding:25px;
+      background:linear-gradient(transparent, rgba(0,0,0,0.8));
+      color:white;
+    }
+
+    .food-text h3{
+      margin-bottom:10px;
+      font-size:28px;
+    }
+
+    .transport{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:40px;
+      padding:50px;
+    }
+
+    .transport img{
+      width:45%;
+      min-width:300px;
+      border-radius:20px;
+      object-fit:cover;
+    }
+
+    .transport-content{
+      flex:1;
+    }
+
+    .transport-content h2{
+      font-size:55px;
+      margin-bottom:20px;
+      color:#2d1e17;
+    }
+
+    .transport-content ul{
+      padding-left:25px;
+      line-height:2.3;
+      font-size:18px;
+      color:#555;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:15px;
+      padding:0 50px 50px;
+    }
+
+    .gallery img{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+      border-radius:15px;
+      transition:0.3s;
+    }
+
+    .gallery img:hover{
+      transform:scale(1.03);
+    }
+
+    .contact{
+      display:flex;
+      flex-wrap:wrap;
+      min-height:500px;
+    }
+
+    .contact-image{
+      flex:1;
+      min-width:300px;
+      background:url('https://images.pexels.com/photos/161154/street-japan-night-osaka-161154.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover;
+    }
+
+    .contact-info{
+      flex:1;
+      min-width:300px;
+      background:#e9dcc9;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding:70px;
+    }
+
+    .contact-info h2{
+      font-size:55px;
+      margin-bottom:30px;
+      color:#2d1e17;
+    }
+
+    .contact-box{
+      background:white;
+      padding:22px;
+      margin-bottom:18px;
+      border-radius:14px;
+      font-size:18px;
+      box-shadow:0 5px 12px rgba(0,0,0,0.08);
+    }
+
+    footer{
+      background:#2d1e17;
+      color:white;
+      text-align:center;
+      padding:30px;
+      margin-top:40px;
+      font-size:17px;
+    }
+
+    @media(max-width:768px){
+
+      nav{
+        padding:15px 20px;
+      }
+
+      nav ul{
+        gap:15px;
+      }
+
+      .hero-right{
+        padding:50px;
+      }
+
+      .hero-right h2{
+        font-size:55px;
+      }
+
+      .section-title{
+        font-size:38px;
+      }
+
+      .transport{
+        flex-direction:column;
+      }
+
+      .transport img{
+        width:100%;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <nav>
+
+    <h1>KYOTO</h1>
+
+    <ul>
+      <li><a href="#destinasi">Destinasi</a></li>
+      <li><a href="#kuliner">Kuliner</a></li>
+      <li><a href="#transport">Transport</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+  </nav>
+
+  <div class="hero">
+
+    <div class="hero-left"></div>
+
+    <div class="hero-right">
+
+      <h2>TRAVEL GUIDE</h2>
+
+      <p>
+        Kyoto adalah salah satu kota wisata paling terkenal di Jepang.
+        Kota ini memiliki perpaduan budaya tradisional, kuil bersejarah,
+        kuliner khas, dan suasana alam yang indah.
+      </p>
+
+      <button class="btn">Explore Kyoto</button>
+
+    </div>
+
+  </div>
+
+  <section id="destinasi">
+
+    <h2 class="section-title">Destinasi Wisata</h2>
+
+    <p class="section-subtitle">
+      Tempat wisata terkenal yang wajib dikunjungi saat berada di Kyoto.
+    </p>
+
+    <div class="destination-grid">
+
+      <div class="card">
+
+        <img src="https://images.pexels.com/photos/2187605/pexels-photo-2187605.jpeg?auto=compress&cs=tinysrgb&w=1600">
+
+        <div class="card-content">
+
+          <h3>Fushimi Inari</h3>
+
+          <p>
+            Tempat wisata dengan ribuan gerbang merah khas Jepang
+            yang menjadi ikon terkenal Kyoto.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="https://images.pexels.com/photos/1440476/pexels-photo-1440476.jpeg?auto=compress&cs=tinysrgb&w=1600">
+
+        <div class="card-content">
+
+          <h3>Kinkakuji Temple</h3>
+
+          <p>
+            Kuil emas dengan pemandangan taman dan kolam
+            yang sangat indah.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="https://images.pexels.com/photos/5220030/pexels-photo-5220030.jpeg?auto=compress&cs=tinysrgb&w=1600">
+
+        <div class="card-content">
+
+          <h3>Arashiyama</h3>
+
+          <p>
+            Hutan bambu terkenal dengan suasana sejuk,
+            tenang, dan cocok untuk fotografi.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="kuliner">
+
+    <h2 class="section-title">Kuliner Jepang</h2>
+
+    <p class="section-subtitle">
+      Makanan khas Jepang yang populer di Kyoto.
+    </p>
+
+    <div class="food-section">
+
+      <div class="food-card">
+
+        <img src="https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&cs=tinysrgb&w=1600">
+
+        <div class="food-text">
+
+          <h3>Sushi</h3>
+
+          <p>
+            Makanan Jepang berbahan nasi dan ikan segar.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="food-card">
+
+        <img src="https://images.pexels.com/photos/884600/pexels-photo-884600.jpeg?auto=compress&cs=tinysrgb&w=1600">
+
+        <div class="food-text">
+
+          <h3>Ramen</h3>
+
+          <p>
+            Mie kuah khas Jepang dengan berbagai topping.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="food-card">
+
+        <img src="https://images.pexels.com/photos/4518843/pexels-photo-4518843.jpeg?auto=compress&cs=tinysrgb&w=1600">
+
+        <div class="food-text">
+
+          <h3>Takoyaki</h3>
+
+          <p>
+            Bola tepung isi gurita yang populer di Jepang.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="transport">
+
+    <div class="transport">
+
+      <img src="https://images.pexels.com/photos/2614818/pexels-photo-2614818.jpeg?auto=compress&cs=tinysrgb&w=1600">
+
+      <div class="transport-content">
+
+        <h2>Transportasi</h2>
+
+        <ul>
+          <li>Kereta cepat Shinkansen</li>
+          <li>Bus wisata kota</li>
+          <li>Taksi Jepang</li>
+          <li>Sepeda sewa</li>
+          <li>Subway modern</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="gallery">
+
+    <h2 class="section-title">Travel Gallery</h2>
+
+    <p class="section-subtitle">
+      Pemandangan indah kota Kyoto Jepang.
+    </p>
+
+    <div class="gallery">
+
+      <img src="https://images.pexels.com/photos/590478/pexels-photo-590478.jpeg?auto=compress&cs=tinysrgb&w=1600">
+
+      <img src="https://images.pexels.com/photos/730547/pexels-photo-730547.jpeg?auto=compress&cs=tinysrgb&w=1600">
+
+      <img src="https://images.pexels.com/photos/161251/senso-ji-temple-japan-kyoto-landmark-161251.jpeg?auto=compress&cs=tinysrgb&w=1600">
+
+      <img src="https://images.pexels.com/photos/1440476/pexels-photo-1440476.jpeg?auto=compress&cs=tinysrgb&w=1600">
+
+    </div>
+
+  </section>
+
+  <section class="contact" id="contact">
+
+    <div class="contact-image"></div>
+
+    <div class="contact-info">
+
+      <h2>Contact</h2>
+
+      <div class="contact-box">
+        📍 Kyoto, Jepang
+      </div>
+
+      <div class="contact-box">
+        📧 kyototravel@gmail.com
+      </div>
+
+      <div class="contact-box">
+        📞 0812-3456-7890
+      </div>
+
+      <div class="contact-box">
+        🌐 www.kyototravel.com
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+    Travel Guide Kyoto Jepang | Tugas Sekolah HTML
+  </footer>
+
+</body>
+</html>
+```
