@@ -1,0 +1,706 @@
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Travel Guide Jepang</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+background:#8b6752;
+font-family:'Poppins',sans-serif;
+padding:30px;
+overflow-x:hidden;
+}
+
+/* HERO */
+
+.hero{
+width:100%;
+background:#efe9d8;
+border-radius:10px;
+overflow:hidden;
+display:grid;
+grid-template-columns:1.2fr 1fr;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+margin-bottom:30px;
+}
+
+.hero-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
+
+.hero-content{
+padding:60px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+position:relative;
+background:#ece4cf;
+}
+
+.hero-content::before{
+content:"";
+position:absolute;
+top:30px;
+right:30px;
+width:120px;
+height:120px;
+background:#c9c18e;
+}
+
+.hero-box{
+background:#f7f1df;
+padding:50px;
+position:relative;
+z-index:2;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.hero-box h1{
+font-family:'Oswald',sans-serif;
+font-size:75px;
+line-height:1;
+margin-bottom:20px;
+color:#2f2530;
+}
+
+.hero-box p{
+font-size:16px;
+line-height:1.8;
+color:#666;
+margin-bottom:25px;
+}
+
+.hero-box button{
+padding:15px 35px;
+background:#9b7158;
+color:white;
+border:none;
+font-size:16px;
+cursor:pointer;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+margin-bottom:30px;
+}
+
+/* CARD */
+
+.card{
+background:#efe9d8;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card-header{
+background:#9b7158;
+color:white;
+padding:15px 20px;
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.card-header h2{
+font-family:'Oswald',sans-serif;
+font-size:28px;
+}
+
+/* INFO */
+
+.info-content{
+display:grid;
+grid-template-columns:1fr 1fr;
+}
+
+.info-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
+
+.info-list{
+padding:25px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.info-box{
+background:#faf6eb;
+padding:15px;
+border-radius:8px;
+}
+
+.info-box h3{
+font-size:18px;
+margin-bottom:8px;
+color:#7b5b49;
+}
+
+.info-box p{
+font-size:14px;
+line-height:1.7;
+color:#666;
+}
+
+/* FOOD */
+
+.food-container{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+padding:20px;
+}
+
+.food{
+background:#faf6eb;
+border-radius:10px;
+overflow:hidden;
+}
+
+.food img{
+width:100%;
+height:170px;
+object-fit:cover;
+display:block;
+}
+
+.food-text{
+padding:15px;
+}
+
+.food-text h3{
+margin-bottom:8px;
+color:#7b5b49;
+}
+
+.food-text p{
+font-size:13px;
+line-height:1.6;
+color:#666;
+}
+
+/* TRANSPORT */
+
+.transport-content{
+display:grid;
+grid-template-columns:1fr 1fr;
+}
+
+.transport-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
+
+.transport-list{
+padding:20px;
+}
+
+.transport-box{
+background:#faf6eb;
+padding:15px;
+border-radius:10px;
+display:flex;
+gap:15px;
+margin-bottom:15px;
+align-items:center;
+}
+
+.transport-box img{
+width:110px;
+height:75px;
+border-radius:8px;
+object-fit:cover;
+}
+
+.transport-box h3{
+color:#7b5b49;
+margin-bottom:5px;
+}
+
+.transport-box p{
+font-size:13px;
+line-height:1.6;
+color:#666;
+}
+
+/* MAP */
+
+.map img{
+width:100%;
+height:420px;
+object-fit:cover;
+display:block;
+}
+
+/* CONTACT */
+
+.contact{
+background:#efe9d8;
+border-radius:10px;
+overflow:hidden;
+display:grid;
+grid-template-columns:1fr 1fr;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.contact-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
+
+.contact-info{
+padding:60px;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#ece4cf;
+}
+
+.contact-box{
+background:#f7f1df;
+padding:40px;
+width:100%;
+max-width:450px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.contact-item{
+display:flex;
+align-items:center;
+gap:15px;
+margin-bottom:20px;
+font-size:17px;
+color:#7b5b49;
+}
+
+.contact-item i{
+width:45px;
+height:45px;
+background:#c9c18e;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:30px;
+font-size:18px;
+color:white;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:991px){
+
+.hero{
+grid-template-columns:1fr;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.contact{
+grid-template-columns:1fr;
+}
+
+.food-container{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero-content{
+padding:35px;
+}
+
+.hero-box{
+padding:30px;
+}
+
+.hero-box h1{
+font-size:50px;
+}
+
+.info-content{
+grid-template-columns:1fr;
+}
+
+.transport-content{
+grid-template-columns:1fr;
+}
+
+.food-container{
+grid-template-columns:1fr;
+}
+
+.contact-info{
+padding:35px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-image">
+
+<img src="https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=1400&auto=format&fit=crop">
+
+</div>
+
+<div class="hero-content">
+
+<div class="hero-box">
+
+<h1>TRAVEL GUIDE JEPANG</h1>
+
+<p>
+Jelajahi tempat wisata terkenal di Jepang dengan budaya,
+kuliner khas, dan transportasi modern yang menarik untuk wisatawan.
+</p>
+
+<button>START</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- GRID -->
+
+<div class="grid">
+
+<!-- INFORMASI -->
+
+<section class="card">
+
+<div class="card-header">
+
+<i class="fa-solid fa-bars"></i>
+
+<h2>INFORMASI UMUM</h2>
+
+</div>
+
+<div class="info-content">
+
+<div class="info-image">
+
+<img src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+<div class="info-list">
+
+<div class="info-box">
+
+<h3>Destinasi</h3>
+
+<p>Kyoto Jepang dengan budaya dan kuil yang indah.</p>
+
+</div>
+
+<div class="info-box">
+
+<h3>Bahasa</h3>
+
+<p>Bahasa utama yang digunakan adalah Jepang.</p>
+
+</div>
+
+<div class="info-box">
+
+<h3>Cuaca</h3>
+
+<p>Memiliki suasana sejuk dan pemandangan menarik.</p>
+
+</div>
+
+<div class="info-box">
+
+<h3>Mata Uang</h3>
+
+<p>Menggunakan Yen Jepang untuk transaksi.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- MAKAN -->
+
+<section class="card">
+
+<div class="card-header">
+
+<i class="fa-solid fa-utensils"></i>
+
+<h2>TEMPAT MAKAN</h2>
+
+</div>
+
+<div class="food-container">
+
+<div class="food">
+
+<img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=1200&auto=format&fit=crop">
+
+<div class="food-text">
+
+<h3>Sushi</h3>
+
+<p>Makanan khas Jepang dengan ikan segar.</p>
+
+</div>
+
+</div>
+
+<div class="food">
+
+<img src="https://images.unsplash.com/photo-1617093727343-374698b1b08d?q=80&w=1200&auto=format&fit=crop">
+
+<div class="food-text">
+
+<h3>Ramen</h3>
+
+<p>Mie kuah Jepang yang populer.</p>
+
+</div>
+
+</div>
+
+<div class="food">
+
+<img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?q=80&w=1200&auto=format&fit=crop">
+
+<div class="food-text">
+
+<h3>Takoyaki</h3>
+
+<p>Camilan Jepang berbentuk bulat.</p>
+
+</div>
+
+</div>
+
+<div class="food">
+
+<img src="https://images.unsplash.com/photo-1604909052743-94e838986d24?q=80&w=1200&auto=format&fit=crop">
+
+<div class="food-text">
+
+<h3>Tempura</h3>
+
+<p>Gorengan seafood dan sayur khas Jepang.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TRANSPORT -->
+
+<section class="card">
+
+<div class="card-header">
+
+<i class="fa-solid fa-train"></i>
+
+<h2>TRANSPORTASI</h2>
+
+</div>
+
+<div class="transport-content">
+
+<div class="transport-image">
+
+<img src="https://images.unsplash.com/photo-1528164344705-47542687000d?q=80&w=1400&auto=format&fit=crop">
+
+</div>
+
+<div class="transport-list">
+
+<div class="transport-box">
+
+<img src="https://cdn.phototourl.com/free/2026-05-20-f782905a-7040-449d-8035-97f7d44863be.jpg">
+
+<div>
+
+<h3>Shinkansen</h3>
+
+<p>Kereta cepat Jepang yang modern dan nyaman.</p>
+
+</div>
+
+</div>
+
+<div class="transport-box">
+
+<img src="https://cdn.phototourl.com/free/2026-05-20-ca8de1a2-318c-4553-93f8-867708c8bec3.jpg">
+
+<div>
+
+<h3>Bus Jepang</h3>
+
+<p>Bus kota di Jepang yang bersih dan tertata rapi.</p>
+
+</div>
+
+</div>
+
+<div class="transport-box">
+
+<img src="https://cdn.phototourl.com/free/2026-05-20-313ca3aa-8fa0-4987-95b5-60406bb2df75.jpg">
+
+<div>
+
+<h3>Taksi Jepang</h3>
+
+<p>Taksi khas Jepang dengan pelayanan nyaman untuk wisatawan.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- MAP -->
+
+<section class="card map">
+
+<div class="card-header">
+
+<i class="fa-solid fa-map-location-dot"></i>
+
+<h2>LOKASI JEPANG</h2>
+
+</div>
+
+<img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=1400&auto=format&fit=crop">
+
+</section>
+
+</div>
+
+<!-- CONTACT -->
+
+<section class="contact">
+
+<div class="contact-image">
+
+<img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=1400&auto=format&fit=crop">
+
+</div>
+
+<div class="contact-info">
+
+<div class="contact-box">
+
+<div class="contact-item">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<span>Kyoto, Jepang</span>
+
+</div>
+
+<div class="contact-item">
+
+<i class="fa-solid fa-envelope"></i>
+
+<span>travelguide@gmail.com</span>
+
+</div>
+
+<div class="contact-item">
+
+<i class="fa-solid fa-phone"></i>
+
+<span>0812-3456-7890</span>
+
+</div>
+
+<div class="contact-item">
+
+<i class="fa-solid fa-globe"></i>
+
+<span>www.travelguide.com</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+Travel Guide Jepang | Tugas Sekolah HTML
+
+</footer>
+
+</body>
+
+</html>
+```
